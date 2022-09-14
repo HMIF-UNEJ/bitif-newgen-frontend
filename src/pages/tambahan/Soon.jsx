@@ -1,6 +1,11 @@
 import React from 'react';
 import ProfilLogo from '../../assets/logo/profilLogo.png';
 import { useState, useEffect } from 'react';
+// import { Canvas } from '@react-three/fiber';
+// import { OrbitControls } from '@react-three/drei';
+// import Model from './Model.jsx';
+import Model from './Model';
+
 import '../../App.css';
 
 function SoonPage() {
@@ -49,7 +54,7 @@ function SoonPage() {
         <div className='overflow-x-hidden'>
             <section className="h-screen px-2 py-32 md:px-0 grid grid-cols-1 gap-4 content-center custom-bg-animate">
                 <div className="container items-center p-8 mx-auto xl:px-1">
-                    <div className="flex flex-wrap items-center sm:-mx-3">
+                    <div className="container flex flex-wrap items-center sm:-mx-3">
                         <div className="w-full md:w-1/2 md:px-3">
                             <div className="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
                                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-4xl lg:text-5xl text-center">
@@ -90,8 +95,9 @@ function SoonPage() {
                             </div>
                         </div>
                         <div className="w-full md:w-1/2">
-                            <div className="w-full h-auto overflow-hidden rounded-md p-28 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                                <img src={ProfilLogo} alt="logo" />
+                            <div className="w-full overflow-hidden rounded-md sm:rounded-xl" data-rounded="rounded-xl" style={{ height: '600px' }} data-rounded-max="rounded-full">
+                                <Model/>
+                                {/* <img src={ProfilLogo} alt="logo" /> */}
                             </div>
                         </div>
                     </div>

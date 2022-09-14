@@ -63,7 +63,7 @@ function HomePage() {
                             <div className="w-full md:w-1/2 md:px-3">
                                 <div className="w-full">
                                     <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-3xl lg:text-4xl text-center mt-32 md:mt-0">
-                                        <a href="https://hmifunej.id/" target="_blank">
+                                        <a href="https://hmifunej.id/" target="_blank" rel="noreferrer">
                                             <span className='custom-bg-wg-animate py-2 italic shadow-xl pl-3 pr-5 rounded hover:shadow-2xl mr-2'>
                                                 <img src={logoHMIF} alt="logo-hmif" className='w-10 mr-2 inline'/>
                                                 HMIFUNEJ
