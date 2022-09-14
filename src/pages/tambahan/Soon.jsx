@@ -46,7 +46,7 @@ function SoonPage() {
     }); 
 
     return (
-        <div>
+        <div className='overflow-x-hidden'>
             <section className="h-screen px-2 py-32 md:px-0 grid grid-cols-1 gap-4 content-center custom-bg-animate">
                 <div className="container items-center p-8 mx-auto xl:px-1">
                     <div className="flex flex-wrap items-center sm:-mx-3">
@@ -90,7 +90,7 @@ function SoonPage() {
                             </div>
                         </div>
                         <div className="w-full md:w-1/2">
-                            <div className="w-full h-auto overflow-hidden rounded-md p-5 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                            <div className="w-full h-auto overflow-hidden rounded-md p-28 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
                                 <img src={ProfilLogo} alt="logo" />
                             </div>
                         </div>
