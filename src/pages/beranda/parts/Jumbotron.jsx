@@ -21,7 +21,7 @@ function PartJumbotron() {
                         <h2 className='text-center font-bold mt-12 text-3xl text-white sm:text-4xl md:text-2xl lg:text-3xl'>
                             bit-IF 2K22
                         </h2>
-                        <p className='text-center text-white mt-2 text-2xl text-white sm:text-3xl md:text-xl lg:text-2xl'>Better Integrated Transformation Informatics 2K22</p>
+                        <p className='text-center text-white mt-2 text-2xl sm:text-3xl md:text-xl lg:text-2xl'>Better Integrated Transformation Informatics 2K22</p>
                         <hr className='my-10' />
                         <div className="text-center">
                             <button className="btn gap-2 glass shadow-lg">
