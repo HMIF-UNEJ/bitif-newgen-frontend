@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 // import { Container } from './styles';
 
 function PartCekPoint() {
-  const [nim, setNim] = useState();
+  const [nim, setNim] = useState('');
   const handleChange = (e) => {
   const value = e.target.value.replace(/\D/g, "");
       setNim(value);
