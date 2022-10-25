@@ -103,7 +103,11 @@ function Navbar() {
                         Document
                     </Link>
                 </Menu>
-                <Menu onClick={handleClick}>Point</Menu>
+                <Menu onClick={handleClick}>
+                  <Link to={'/point'}>
+                        Point
+                  </Link>
+                </Menu>
                 <Menu onClick={handleClick}>
                     <Link to={'/timeline'}>
                         Time Line

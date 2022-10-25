@@ -10,6 +10,7 @@ import HomePage from './pages/beranda/Home';
 import Struktur from "./pages/struktur/CommitteeStructure";
 import Document from "./pages/berkas/Document";
 import Timeline from "./pages/linimasa/Timeline";
+import DetailPoint from "./pages/cekpoin/DetailCheckpoint";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                     <Route index element={<HomePage />} />
                     <Route path="document" element={<Document />} />
                     <Route path="timeline" element={<Timeline />} />
+                    <Route path="point" element={<DetailPoint />} />
                     <Route path="struktur" element={<Struktur />} />
                     {/*<Route path="*" element={<NoPage />} />*/}
                 </Route>
