@@ -118,7 +118,11 @@ function Navbar() {
                         Struktur
                     </Link>
                 </Menu>
-                <Menu onClick={handleClick}>Tugas</Menu>
+                <Menu onClick={handleClick}>
+                  <Link to={"/submission"} >
+                        Tugas
+                  </Link>
+                </Menu>
             </Sidebar>
         </div>
     );

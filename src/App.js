@@ -11,6 +11,8 @@ import Struktur from "./pages/struktur/CommitteeStructure";
 import Document from "./pages/berkas/Document";
 import Timeline from "./pages/linimasa/Timeline";
 import DetailPoint from "./pages/cekpoin/DetailCheckpoint";
+import Submission from "./pages/tugas/Submission";
+import DetailSubmission from "./pages/tugas/DetailSubmission";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
                     <Route path="timeline" element={<Timeline />} />
                     <Route path="point" element={<DetailPoint />} />
                     <Route path="struktur" element={<Struktur />} />
+                    <Route path="submission" element={<Submission />} />
+                    <Route path="submission/:id" element={<DetailSubmission />} />
                     {/*<Route path="*" element={<NoPage />} />*/}
                 </Route>
             </Routes>
