@@ -1,4 +1,7 @@
+import axios from "axios"
 import React from "react"
+import { useState } from "react"
+import { useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 
 const TopBottom = keyframes`
@@ -87,41 +90,53 @@ const Circle = styled.div`
 
 
 export default function PartTimeline(){
+    const [timelines, setTimelines] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const response = await axios({
+                method: "get",
+                url: "https://api-developer-bitif.hmifunej.id/api/get-timeline"
+            })
+            setTimelines(response.data.timelines)
+        }
+        
+        getData()
+    }, [])
+
     return (
         <div className={"relative py-20 px-5"}>
             <TimeLine>
                 {/* container */}
-                <Container isRight={true} delay={1}>
-                    <Circle isRight={true} />
-                    {/*  text  */}
-                    <ChildContainer isRight={true}>
-                        {/* bulat */}
-                        <h2 className={"font-bold text-xl"}>pembukaan ospek jurusan</h2>
-                        <small className={"text-gray-500"}>05 - November - 2022</small>
-                        <p className={"text-sm mt-5"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim ex itaque laudantium optio pariatur possimus rem repellendus voluptas. Dolorem dolores incidunt, iure placeat praesentium repudiandae similique. Ab, facilis, tempora!</p>
-                    </ChildContainer>
-                </Container>
-
+                {
+                    timelines.map((item, index) => (
+                        <Container key={index} isRight={(index+1) % 2 !== 0} delay={index+1}>
+                            <Circle isRight={(index+1) % 2 !== 0} />
+                            <ChildContainer isRight={(index+1) % 2 !== 0}>
+                                <h2 className={"font-bold text-xl"}>{ item.name }</h2>
+                                <p className="mt-3">{item.time + ", " + item.date}</p>
+                                <p className={"text-gray-500 text-sm"}>Di <b>{item.location}</b></p>
+                            </ChildContainer>
+                        </Container>
+                    ))
+                }
+{/* 
                 <Container isRight={false} delay={2}>
                     <Circle isRight={false} />
-                    {/*  text  */}
                     <ChildContainer isRight={false}>
                         <h2 className={"font-bold text-xl"}>Pertemuan pertama</h2>
                         <small className={"text-gray-500"}>12 - November - 2022</small>
-                        <p className={"text-sm mt-5"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim ex itaque laudantium optio pariatur possimus rem repellendus voluptas. Dolorem dolores incidunt, iure placeat praesentium repudiandae similique. Ab, facilis, tempora!</p>
                     </ChildContainer>
-                </Container>
+                </Container> */}
 
 
-                <Container isRight={true} delay={3}>
+                {/* <Container isRight={true} delay={3}>
                     <Circle isRight={true} />
-                    {/*  text  */}
                     <ChildContainer isRight={true}>
                         <h2 className={"font-bold text-xl"}>Pertemuan kedua</h2>
                         <small className={"text-gray-500"}>19 - November - 2022</small>
-                        <p className={"text-sm mt-5"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim ex itaque laudantium optio pariatur possimus rem repellendus voluptas. Dolorem dolores incidunt, iure placeat praesentium repudiandae similique. Ab, facilis, tempora!</p>
                     </ChildContainer>
-                </Container>
+                </Container> */}
             </TimeLine>
         </div>
     )

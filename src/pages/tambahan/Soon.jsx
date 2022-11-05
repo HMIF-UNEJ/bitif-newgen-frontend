@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilLogo from '../../assets/logo/profilLogo.png';
+// import ProfilLogo from '../../assets/logo/profilLogo.png';
 import { useState, useEffect } from 'react';
 // import { Canvas } from '@react-three/fiber';
 // import { OrbitControls } from '@react-three/drei';
@@ -9,7 +9,7 @@ import Model from './Model';
 import '../../App.css';
 
 function SoonPage() {
-    const [expiryTime, setExpiryTime] = useState("8 nov 2022 00:00:00");
+    const [expiryTime, setExpiryTime] = useState("5 nov 2022 00:00:00");
     const [countdownTime, setCountdownTime]= useState(
         {
             countdownDays:'',

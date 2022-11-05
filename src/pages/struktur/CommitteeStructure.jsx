@@ -3,6 +3,7 @@ import Jumbotron from "./part/Jumbotron";
 import PartStruktur from "./part/Struktur";
 import bgGreen from "../../assets/image/bgGreen.svg"
 function Struktur(){
+    
 
     return (
         <>

@@ -8,7 +8,7 @@ export default function Timeline(){
     return (
         <>
             <div id='custom-all-panels' className='overflow-x-hidden'>
-                <section className="h-[50vh]"  style={{ backgroundImage: `url(${bgRed})` }}>
+                <section className="h-[100vh]"  style={{ backgroundImage: `url(${bgRed})` }}>
                     <Jumbotron />
                 </section>
                 <section className="bg-gradient-to-tl from-sky-600 to-sky-400 overflow-y-hidden" style={{ backgroundImage: `url(${bgBlue})` }}>

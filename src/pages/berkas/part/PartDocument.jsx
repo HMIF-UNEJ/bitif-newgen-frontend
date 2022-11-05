@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import CardBerkas from "../../../components/berkas/CardBerkas";
+// import CardBerkas from "../../../components/berkas/CardBerkas";
 import CardSkeleton from "../../../components/struktur/CardSkeleton";
 
 
@@ -22,10 +22,11 @@ export default function PartDocument(){
             </div>
             { !loading ? (
                 <div className="grid grid-cols-4 gap-x-2 gap-y-5 mt-10">
+                    <h1 className="text-2xl">Data Belum ada</h1>
+                    {/* <CardBerkas link="" title={""} />
                     <CardBerkas link="" title={""} />
                     <CardBerkas link="" title={""} />
-                    <CardBerkas link="" title={""} />
-                    <CardBerkas link="" title={""} />
+                    <CardBerkas link="" title={""} /> */}
                 </div>
             ) : (
                 <div className="grid grid-cols-4 gap-x-2 gap-y-5 mt-10">
