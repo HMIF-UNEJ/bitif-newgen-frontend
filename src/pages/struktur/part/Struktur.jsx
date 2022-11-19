@@ -18,31 +18,32 @@ export default function PartStruktur(){
         const timing = setTimeout(() => {
             setLoading(false)
         }, 1000);
-        let id = e.currentTarget.id
+        let id = Number(e.currentTarget.id)
         settab(() => {
             return parseInt(id)
         })
         let tabs = ""
-        if (id == 0){
+        if (id === 0){
             tabs = "all"
-        }else if(id == 1){
+        }else if(id === 1){
             tabs = "BPH"
-        }else if(id == 2){
+        }else if(id === 2){
             tabs = "KSK"
-        }else if (id == 3){
+        }else if (id === 3){
             tabs = "HUMAS"
-        }else if(id == 4){
+        }else if(id === 4){
             tabs = "ACARA"
-        }else if(id == 5){
+        }else if(id === 5){
             tabs = "KOMDIS"
-        }else if (id == 6){
+        }else if (id === 6){
             tabs = "PDD"
-        }else if (id == 7){
-            tabs = "PERKAB"
+        }else if (id === 7){
+            tabs = "PERKAP"
         }else{
             tabs = "all"
         }
         setFilter(tabs)
+        
         return () => clearTimeout(timing)
     }
 
@@ -55,11 +56,8 @@ export default function PartStruktur(){
             setLoading(false)
             setStructure(struktur.data.structures)
         }
-        const timing = setTimeout(() => {
-            fetchData()
-        }, 100);
-        return () => clearTimeout(timing)
-    }, [filter])
+        fetchData()
+    }, [])
 
     return (
         <div className={"relative py-20 px-5"}>

@@ -3,13 +3,36 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 import Input from '../../../components/submission/Input'
 import Label from '../../../components/submission/Label'
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
+import InputSelect from '../../../components/submission/InputSelect';
+import InputFile from '../../../components/submission/InputFile';
 
 export default function FormSubmission(){
+    // const [idTask, setIdTask] = useState(0);
+    const [task, setTask] = useState([]);
+    // const path = window.location.pathname
+    const [message, setMessage] = useState("");
     const [form, setForm] = useState({
         name: '',
-        nim: ''
+        nim: '',
+        task_name: '',
+        group_name: '',
+        document: ''
     });
+
+    const group = [
+        "Python",
+        "C++", 
+        "C#",
+        "Javascript",
+        "Java", 
+        "Pascal",
+        "Golang",
+        "PHP",
+        "Dart",
+        "Swift"
+    ]
 
 
     const handleChange = ({ target: {name, value} }) => {
@@ -17,36 +40,58 @@ export default function FormSubmission(){
             return {...prevState, [name]: value}
         })
     }
+
+    const getTask = async () => {
+        const response = await axios({
+            method: "get",
+            url: "http://api-developer-bitif.hmifunej.id/api/get-task"
+        });
+        let tugas = []
+        for (let index = 0; index < response.data.tasks.length; index++) {
+            
+            tugas.push(response.data.tasks[index].task);
+            
+        } 
+        setTask(tugas)
+    }
+
+    useEffect(() => {
+        getTask()
+        // console.log(task)
+    }, [])
+
     useEffect(() => {
         console.log(form)
     }, [form])
 
 
-    const notify = () => {
-        toast("Default Notification !");
-  
-        toast.success("Success Notification !", {
-          position: toast.POSITION.TOP_CENTER
-        });
-  
-        toast.error("Error Notification !", {
+    const failed = () => {
+        toast.error("Gagal ditambah !", {
           position: toast.POSITION.TOP_LEFT
         });
-  
-        toast.warn("Warning Notification !", {
-          position: toast.POSITION.BOTTOM_LEFT
-        });
-  
-        toast.info("Info Notification !", {
-          position: toast.POSITION.BOTTOM_CENTER
-        });
-  
-      };
+    }
 
-      
+    const success = () => {
+
+        toast.success(message, {
+          position: toast.POSITION.TOP_CENTER
+        })
+    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        notify()
+        const post = axios({
+            method: "GET",
+            url: "http://api-developer-bitif.hmifunej.id/api/post-task-individual"
+        }).than(response => {
+            setMessage(post.data.message)
+            success()
+        }).catch((err) => {
+            setMessage("gagal ditambahkan")
+            failed()
+        })
+        
     }
 
     return (
@@ -60,10 +105,23 @@ export default function FormSubmission(){
                     <Label label={"Nomer Induk Mahasiswa"} />
                     <Input name="nim" placeholder={"2024101030xx"} onChange={handleChange} />
                 </div>
+                <div className='mb-6'>
+                    <Label label={'Group Name'} />
+                    <InputSelect name={'group_name'} onChange={handleChange} data={group} />
+                </div>
+                <div className='mb-6'>
+                    <Label label={'Task Name'} />
+                    <InputSelect name={'task_name'} onChange={handleChange} data={task} />
+                </div>
+                <div className='mb-6'>
+                    <Label label={'Document'} />
+                    <InputFile name={'document'} onChange={handleChange} />
+                </div>
                 <div>
-                    <input type="submit"  onClick={handleSubmit} value={"Kumpulkan"} />
+                    <button className='w-full bg-green-500 p-3 text-white rounded-md' type="submit"  onClick={handleSubmit}>Kumpulkan</button>
                 </div>
             </form>
+            <ToastContainer /> 
         </div>
     )
 }

@@ -32,7 +32,7 @@ export default function TabBar({ tab, handleTab }){
             </div>
 
             <div id={7} className={`${tab === 7 ? "bg-green-500" : "bg-white"} px-8 py-2 rounded-lg cursor-pointer`} onClick={handleTab}>
-                <span className={`font-semibold ${tab === 7 ? "text-white" : "text-green-500"} text-sm`}>PERKAB</span>
+                <span className={`font-semibold ${tab === 7 ? "text-white" : "text-green-500"} text-sm`}>PERKAP</span>
             </div>
 
         </div>

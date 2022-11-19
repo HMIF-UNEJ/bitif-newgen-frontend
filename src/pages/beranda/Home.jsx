@@ -47,9 +47,9 @@ function HomePage() {
             <section className="panels bg-green-500" style={{ backgroundImage: `url(${bgGreen})` }}>
                 <PartGoal />
             </section>
-            <section className="panels bg-cyan-500" style={{ backgroundImage: `url(${bgCyan})` }}>
+            {/* <section className="panels bg-cyan-500" style={{ backgroundImage: `url(${bgCyan})` }}>
                 <PartCekPoint />
-            </section>
+            </section> */}
         </div>
     );
 }

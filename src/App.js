@@ -2,6 +2,7 @@
 // import SoonPage from "./pages/tambahan/Soon";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "react-loading-skeleton/dist/skeleton.css";
+import "react-toastify/dist/ReactToastify.css";
 // import FinishPage from './pages/tambahan/Finish';
 
 import "./App.css";
@@ -24,6 +25,7 @@ function App() {
             <Route path="document" element={<Document />} />
             <Route path="timeline" element={<Timeline />} />
             <Route path="point" element={<DetailPoint />} />
+            <Route path="point/:nim" element={<DetailPoint />} />
             <Route path="struktur" element={<Struktur />} />
             <Route path="submission" element={<Submission />} />
             <Route path="submission/:id" element={<DetailSubmission />} />

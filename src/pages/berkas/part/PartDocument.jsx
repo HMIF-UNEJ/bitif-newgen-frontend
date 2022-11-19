@@ -1,19 +1,31 @@
+import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-// import CardBerkas from "../../../components/berkas/CardBerkas";
+import CardBerkas from "../../../components/berkas/CardBerkas";
 import CardSkeleton from "../../../components/struktur/CardSkeleton";
 
 
 export default function PartDocument(){
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
+    const [document, setDocument] = useState([])
 
     useEffect(() => {
-        const timing = setTimeout(() => {
+        const getFetchDocument = () => {
+            setLoading(true)
+            axios({
+                method: "GET",
+                url: "https://api-developer-bitif.hmifunej.id/api/get-document"
+            }).then((response) => {
+                setDocument(response.data.documents);
+            }).catch((err) => {
+                setDocument([]);
+            })
             setLoading(false)
-        }, 1000)
-        return () => clearTimeout(timing)
-    })
+        }
+        getFetchDocument()
+    }, [])
+
     return (
         <div className="max-w-6xl mx-auto py-10">
             <div className="header">
@@ -22,11 +34,17 @@ export default function PartDocument(){
             </div>
             { !loading ? (
                 <div className="grid grid-cols-4 gap-x-2 gap-y-5 mt-10">
-                    <h1 className="text-2xl">Data Belum ada</h1>
-                    {/* <CardBerkas link="" title={""} />
-                    <CardBerkas link="" title={""} />
-                    <CardBerkas link="" title={""} />
-                    <CardBerkas link="" title={""} /> */}
+                    {
+                        document.length === 0 ?
+                        <h1 className="text-2xl">Data Belum ada</h1>
+                        : (
+                             document.map(item => (
+                                <CardBerkas title={item.title} img={item.thumbnail} document={item.document} />
+                             ))
+                        )
+                    }
+                    
+            
                 </div>
             ) : (
                 <div className="grid grid-cols-4 gap-x-2 gap-y-5 mt-10">
